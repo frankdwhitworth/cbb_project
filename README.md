@@ -1,7 +1,5 @@
 # College Basketball Betting Risk Project
-#
-# 
-#
+
 ### What is this?
 This is called a GitHub repository. It is a tool that is essentially Google Drive for big programming projects. We will use this to share our progress and also to dump files and info for eachother. 
 
