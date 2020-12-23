@@ -21,3 +21,19 @@ You can now mess around inside of the repository and edit some of the code or ju
 If you have any ideas or files you want me to look at, just put it in the `cbb_project/ideas_and_files` folder that I made. 
 
 Text me when you have read over all of this and are ready to get to work and make some money 🤑
+
+
+### How to run code
+This is important so pay attention.
+
+Whenever I make edits to the python script, I might be installing different libraries and tools. To make sure that you and I have the same libraries installed and everything is synced up, we will be working in a virtual environment (venv). What this venv will ensure is the fact that you and I (and whoever is on the project) will have the same libraries and nothing will be left out at compile and run time. 
+
+Every time you want to run our program, you are going to have to go into the venv by doing the following command: 
+```sh
+source .gitignore/env/bin/active
+```
+you should see `(env)` to the left of the command line now. Now, do this command to ensure you are using the right python3
+```sh
+which python3
+```
+If you see `/cbb_project/.gitignore/env/bin/python` at the end of the file location, then you are successfully using the venv python and you are good to go
