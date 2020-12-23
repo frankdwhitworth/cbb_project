@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/frankwhitworth/Documents/cbb_project/env"
+set -gx VIRTUAL_ENV "/Users/frankwhitworth/Documents/cbb_project/.gitignore/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
