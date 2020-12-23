@@ -12,7 +12,7 @@ This is called a GitHub repository. It is a tool that is essentially Google Driv
 
 
 ### What to do now?
-Try to run the `main.py` that is inside this repository. Enter this into your command prompt:
+Try to run the `main.py` that is inside this repository. Enter this into your command prompt: (first make sure that you are in the cbb_project folder)
 ```sh
 python3 main.py
 ```
