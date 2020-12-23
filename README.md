@@ -12,6 +12,10 @@ This is called a GitHub repository. It is a tool that is essentially Google Driv
 
 
 ### What to do now?
+Try to run the `main.py` that is inside this repository. Enter this into your command prompt:
+```sh
+python3 main.py
+```
 You can now mess around inside of the repository and edit some of the code or just look at it. I will try to make comments in my code so you can understand it, but if you have any questions about any code, just shoot me a text. 
 
 If you have any ideas or files you want me to look at, just put it in the `cbb_project/ideas_and_files` folder that I made. 

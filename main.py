@@ -15,7 +15,7 @@
 # . @s: just the main method    .
 # . . . . . . . . . . . . . . . .
 def main():
-    
+    print ('Ryan, this is python. If you see this by command line output, congrats on running your first program on here.')
 
 
 
