@@ -25,6 +25,7 @@ def main():
     query_team = input("Who's scheudle would you like to see? (Enter 0 to exit) \n> ")
     while query_team != '0':
         # getting next opponent abbr
+        query_abbr = find_query_abbr(query_team)
         next_op_abbr = find_next_opponent_abbr(query_team)
         next_game = find_next_game(query_team)
 
@@ -39,7 +40,7 @@ def main():
         # printing last 5 games for query team and their next opponent
         print_past_5(query_team, query_past_5, next_op_abbr, op_past_5)
 
-        print("\nThis is the beginning of the risk assesment for", query_team, "vs.", next_op_abbr, "(", next_game.date, ")")
+        print("\nThis is the beginning of the risk assesment for", query_abbr, "vs.", next_op_abbr, "(", next_game.date, ")")
         
         # This is where we start getting into the good stuff.
         #baseline_comp(query_team, next_op_abbr)
@@ -113,6 +114,13 @@ def find_next_game(query_team):
             return game
 
 
+def find_query_abbr(query_team):
+    first_none = 0
+    for team in Teams():
+        if team.name == query_team or team.abbreviation == query_team:
+            return team.abbreviation
+
+
 def find_next_opponent_abbr(query_team):
     team_schedule = Schedule(query_team)
     first_none = 0
@@ -120,15 +128,15 @@ def find_next_opponent_abbr(query_team):
         if game.boxscore.pace == None and first_none == 0:
             return game.opponent_abbr
 
-def print_past_5(query_team, query_past_5, next_op_abbr, op_past_5):
+def print_past_5(query_abbr, query_past_5, next_op_abbr, op_past_5):
     print(". . . Last 5 games for", query_team, "and", next_op_abbr, "\n")
     print("\t\t", query_team)
-    print("--------------------------------------")
+    print("--------------------------------------------")
     for game in query_past_5:
         print(game.date, "-\t", game.opponent_abbr)
     print()
     print("\t\t", next_op_abbr)
-    print("--------------------------------------")
+    print("--------------------------------------------")
     for game in op_past_5:
         print(game.date, "-\t", game.opponent_abbr)
 
