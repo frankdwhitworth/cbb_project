@@ -67,8 +67,22 @@ def main():
                 break
         
         tot_games_played = len(past_played_games)
-        print("Now we will be printing the games played (well, testing with the date) - should be", tot_games_played)
+        print("Now we will be printing the games played (well, testing with the date) - should be", tot_games_played, "total games")
         for game in past_played_games:
+            print(game.date)
+        print("Next we will log the last 5 games")
+        game_count = 0
+        if tot_games_played <= 5:
+            for game in past_played_games:
+                past_five_games.append(game)
+        else: 
+            for game in past_played_games:
+                game_count += 1
+                if game_count > (tot_games_played - 5):
+                    past_five_games.append(game)
+        print("- - - - -")
+        print("Now we will be printing the last 5 games played (well, testing with the date) - should be 5 total games")
+        for game in past_five_games:
             print(game.date)
         
         
