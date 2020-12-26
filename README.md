@@ -1,3 +1,4 @@
+[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 # College Basketball Betting Risk Project
 
 ### What is this?

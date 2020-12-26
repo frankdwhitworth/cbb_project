@@ -17,6 +17,7 @@ import pandas as pd
 
 from classes.basics import Basics
 from classes.models.four_factor import Four_Factor
+from classes.models.confidence_letdown import Confidence_Letdown
 
 # . . . . . Main Method . . . . .
 # . @s: just the main method    .
@@ -37,11 +38,18 @@ def main():
         op_past_5 = Basics.query_past_5_list(next_op_abbr, op_season)
         # printing last 5 games for query team and their next opponent
         Basics.print_past_5(query_team, query_past_5, next_op_abbr, op_past_5)
+        # Getting the boxscores for the past 5 games
+        query_5_boxscores = Basics.past_5_to_boxscores(query_past_5)
+        op_5_boxscores = Basics.past_5_to_boxscores(op_past_5)
+        # That's it for prep, let's move to risk assesment
         print("\nThis is the beginning of the risk assesment for", query_team, "vs.", next_op_abbr, "(", next_game.date, ")")
         # This is where we get the teams in a dictionary so that we can see all of their stats.
         team_stats = teams_dict(query_team, next_op_abbr)
         # Now, we will do the basic four factor comparison
         Four_Factor.four_factors(team_stats)
+        # Now we will do the confidence_letdown
+        Confidence_Letdown.confidence_letdown(query_5_boxscores, op_5_boxscores, query_team, next_op_abbr)
+
         query_team = input("\nWho's scheudle would you like to see? (Enter 0 to exit) \n> ")
 
 

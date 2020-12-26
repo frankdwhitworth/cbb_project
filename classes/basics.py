@@ -84,3 +84,9 @@ class Basics:
         print("--------------------------------------------")
         for game in op_past_5:
             print(game.date, "-\t", game.opponent_abbr)
+
+    def past_5_to_boxscores(past_5):
+        past_5_boxscores=[]
+        for game in past_5:
+            past_5_boxscores.append(game.boxscore)
+        return past_5_boxscores

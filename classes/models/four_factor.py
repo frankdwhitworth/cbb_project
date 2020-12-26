@@ -118,7 +118,7 @@ class Four_Factor:
         ''' print("adjusted q_rank =", team_stats['q_rank'])
         print("adjusted o_rank =", team_stats['op_rank']) '''
         # Now we have our new ranks
-        print("\nFour Factor Rating")
+        print("\n Four Factor Rating\n--------------------")
         print(query_team.name, " rating =", query_rating * team_stats['q_rank'])
         print(op_team.name, " rating =", op_rating * team_stats['op_rank'])
 
