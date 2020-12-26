@@ -27,7 +27,7 @@ def main():
         # getting next opponent abbr
         '''query_abbr = find_query_abbr(query_team)'''
         next_op_abbr = find_next_opponent_abbr(query_team)
-        next_game = find_next_game(query_team)
+        '''next_game = find_next_game(query_team)'''
         # getting the schedule for the queried team
         query_season = query_season_list(query_team)
         query_past_5 = query_past_5_list(query_team, query_season)
@@ -40,10 +40,12 @@ def main():
         # This is where we get the teams in a dictionary so that we can see all of their stats.
         team_stats = teams_dict(query_team, next_op_abbr)
         # Now, we will do the basic four factor comparison
-        four_factors(team_stats)
+        #four_factors(team_stats)
         query_team = input("\nWho's scheudle would you like to see? (Enter 0 to exit) \n> ")
 
 
+def confidence_letdown(query_past_5, op_past_5):
+    print()
 
 def four_factors(team_stats):
     # We are first initializing the ratings at zero
@@ -105,9 +107,9 @@ def four_factors(team_stats):
     corrected_stats['op_free_throw_%'] = team_stats['op_free_throw_%'] + stats_curve['ft_curve']
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Let's test to see if it worked
-    print(corrected_stats)
+    '''print(corrected_stats)
     for elem in corrected_stats:
-        print(elem, "=", corrected_stats[elem])
+        print(elem, "=", corrected_stats[elem]) '''
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Great, it works. Let's move onto the weights:
     #       field goals = 40%
@@ -136,9 +138,9 @@ def four_factors(team_stats):
     query_rating /= 100
     op_rating /= 100
     # Now print them
-    print("\nquery_rating =", query_rating)
+    ''' print("\nquery_rating =", query_rating)
     print("op_rating =", op_rating)
-    print()
+    print() '''
     # just trying out their rating system
     min_and_max_ranks = min_and_max_ratings()
     # trying out to see if i can weigh them like i did
@@ -148,12 +150,12 @@ def four_factors(team_stats):
     top_max = curve + max_rank
     team_stats['q_rank'] = (query_team.simple_rating_system + curve) / top_max
     team_stats['op_rank'] = (op_team.simple_rating_system + curve) / top_max
-    print("adjusted q_rank =", team_stats['q_rank'])
-    print("adjusted o_rank =", team_stats['op_rank'])
+    ''' print("adjusted q_rank =", team_stats['q_rank'])
+    print("adjusted o_rank =", team_stats['op_rank']) '''
     # Now we have our new ranks
-    print("\nwithout +1")
-    print("new", query_team.name, " rating =", query_rating * team_stats['q_rank'])
-    print("new", op_team.name, " rating =", op_rating * team_stats['op_rank'])
+    print("\nFour Factor Rating")
+    print(query_team.name, " rating =", query_rating * team_stats['q_rank'])
+    print(op_team.name, " rating =", op_rating * team_stats['op_rank'])
 
 
 
