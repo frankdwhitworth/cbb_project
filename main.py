@@ -15,27 +15,27 @@ from datetime import date
 
 import pandas as pd
 
+from basics import Basics
+
 # . . . . . Main Method . . . . .
 # . @s: just the main method    .
 # . . . . . . . . . . . . . . . .
 def main():
-    print('\n\n\nRyan, this is python. If you see this by command line output, congrats on running your first program on here.')
-    print('now onto testing out one of our libraries, sportsreference')
     print(". . .")
     query_team = input("Who's scheudle would you like to see? (Enter 0 to exit) \n> ")
     while query_team != '0':
         # getting next opponent abbr
-        '''query_abbr = find_query_abbr(query_team)'''
-        next_op_abbr = find_next_opponent_abbr(query_team)
-        '''next_game = find_next_game(query_team)'''
+        query_abbr = Basics.find_query_abbr(query_team)
+        next_op_abbr = Basics.find_next_opponent_abbr(query_team)
+        next_game = Basics.find_next_game(query_team)
         # getting the schedule for the queried team
-        query_season = query_season_list(query_team)
-        query_past_5 = query_past_5_list(query_team, query_season)
+        query_season = Basics.query_season_list(query_team)
+        query_past_5 = Basics.query_past_5_list(query_team, query_season)
         # setting up local arrays for the team we just queried
-        op_season = query_season_list(next_op_abbr)
-        op_past_5 = query_past_5_list(next_op_abbr, op_season)
+        op_season = Basics.query_season_list(next_op_abbr)
+        op_past_5 = Basics.query_past_5_list(next_op_abbr, op_season)
         # printing last 5 games for query team and their next opponent
-        print_past_5(query_team, query_past_5, next_op_abbr, op_past_5)
+        Basics.print_past_5(query_team, query_past_5, next_op_abbr, op_past_5)
         print("\nThis is the beginning of the risk assesment for", query_team, "vs.", next_op_abbr, "(", next_game.date, ")")
         # This is where we get the teams in a dictionary so that we can see all of their stats.
         team_stats = teams_dict(query_team, next_op_abbr)
@@ -202,86 +202,13 @@ def teams_dict(query_abbr, op_team):
         if team.name == query_abbr or team.abbreviation.lower() == query_abbr:
             team_stats['query'] = team
             query = team.abbreviation.lower()
-            print(query, "(the query) was found!")
+            ''' print(query, "(the query) was found!") '''
         # this is the if conditional for the oponenet
         elif team.name == op_team or team.abbreviation.lower() == op_team:
             team_stats['op'] = team
             op = team.abbreviation.lower()
-            print(op, "(the op) was found") 
-    print(team_stats)
+            ''' print(op, "(the op) was found") '''
     return team_stats
-
-def query_season_list(query_team):
-    team_schedule = Schedule(query_team)
-    # setting up local arrays for the team we just queried
-    past_played_games = []
-    past_five_games = []
-    ot_games_played = 0
-    # this will take the schedule that we got from the querried team and now iterrate through each game in schedule
-    first_none = 0
-    for game in team_schedule:
-        if game.boxscore.pace != None:
-            past_played_games.append(game)
-            query_boxscore = game.boxscore
-        else: 
-            if first_none == 0:
-                next_game = game
-                next_opponent_name = find_next_opponent_abbr(query_team)
-                first_none = 1
-            break
-    return past_played_games
-
-def query_past_5_list(query_team, query_season):
-    past_five_games = []
-    tot_games_played = len(query_season)
-    game_count = 0
-    if tot_games_played <= 5:
-        for game in query_season:
-            past_five_games.append(game)
-    else: 
-        for game in query_season:
-            game_count += 1
-            if game_count > (tot_games_played - 5):
-                past_five_games.append(game)
-    return past_five_games
-
-def find_next_game(query_team):
-    team_schedule = Schedule(query_team)
-    first_none = 0
-    for game in team_schedule:
-        if game.boxscore.pace == None and first_none == 0:
-            return game
-
-def find_query_abbr(query_team):
-    first_none = 0
-    for team in Teams():
-        if team.name == query_team or team.abbreviation == query_team:
-            return team.abbreviation
-
-def find_op_abbr(query_team):
-    team_schedule = Schedule(query_team)
-    for game in team_schedule:
-        return game.opponent_abbr
-
-
-def find_next_opponent_abbr(query_team):
-    team_schedule = Schedule(query_team)
-    first_none = 0
-    for game in team_schedule:
-        if game.boxscore.pace == None and first_none == 0:
-            return game.opponent_abbr
-
-def print_past_5(query_abbr, query_past_5, next_op_abbr, op_past_5):
-    print(". . . \nLast 5 games for", query_abbr, "and", next_op_abbr, "\n")
-    print("\t\t", query_abbr)
-    print("--------------------------------------------")
-    for game in query_past_5:
-        print(game.date, "-\t", game.opponent_abbr)
-    print()
-    print("\t\t", next_op_abbr)
-    print("--------------------------------------------")
-    for game in op_past_5:
-        print(game.date, "-\t", game.opponent_abbr)
 
 
 
