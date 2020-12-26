@@ -136,8 +136,24 @@ def four_factors(team_stats):
     query_rating /= 100
     op_rating /= 100
     # Now print them
-    print("query_rating =", query_rating)
+    print("\nquery_rating =", query_rating)
     print("op_rating =", op_rating)
+    print()
+    # just trying out their rating system
+    min_and_max_ranks = min_and_max_ratings()
+    # trying out to see if i can weigh them like i did
+    min_rank = min_and_max_ranks[0]
+    max_rank = min_and_max_ranks[1]
+    curve = min_rank * -1
+    top_max = curve + max_rank
+    team_stats['q_rank'] = (query_team.simple_rating_system + curve) / top_max
+    team_stats['op_rank'] = (op_team.simple_rating_system + curve) / top_max
+    print("adjusted q_rank =", team_stats['q_rank'])
+    print("adjusted o_rank =", team_stats['op_rank'])
+    # Now we have our new ranks
+    print("\nwithout +1")
+    print("new", query_team.name, " rating =", query_rating * team_stats['q_rank'])
+    print("new", op_team.name, " rating =", op_rating * team_stats['op_rank'])
 
 
 
@@ -162,6 +178,20 @@ def max_stats():
             if temp_ftp > max_stats['max_free_throw_perc']:
                 max_stats['max_free_throw_perc'] = temp_ftp
     return max_stats
+
+def min_and_max_ratings():
+    min_rating = 0
+    max_rating = 0
+    min_and_max = []
+    for team in Teams():
+        if isinstance(team.simple_rating_system, float):
+            if team.simple_rating_system < min_rating:
+                min_rating = team.simple_rating_system
+            elif team.simple_rating_system > max_rating:
+                max_rating = team.simple_rating_system
+    min_and_max.append(min_rating)
+    min_and_max.append(max_rating)
+    return min_and_max
 
 def teams_dict(query_abbr, op_team):
     team_stats={}
