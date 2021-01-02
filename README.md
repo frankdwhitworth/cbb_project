@@ -19,7 +19,7 @@ Whenever I make edits to the python script, I might be installing different libr
 
 Every time you want to run our program, you are going to have to go into the venv by doing the following command: 
 ```sh
-source .gitignore/env/bin/active
+source .gitignore/env/bin/activate
 ```
 you should see `(env)` to the left of the command line now. Now, do this command to ensure you are using the right python3
 ```sh

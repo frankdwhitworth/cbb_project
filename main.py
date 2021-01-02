@@ -18,11 +18,13 @@ import pandas as pd
 from classes.basics import Basics
 from classes.models.four_factor import Four_Factor
 from classes.models.confidence_letdown import Confidence_Letdown
+from classes.score_predict import Score_Predict
 
 # . . . . . Main Method . . . . .
 # . @s: just the main method    .
 # . . . . . . . . . . . . . . . .
 def main():
+    Score_Predict.online_predictor()
     print(". . .")
     query_team = input("Who's scheudle would you like to see? (Enter 0 to exit) \n> ")
     while query_team != '0':
@@ -48,7 +50,7 @@ def main():
         # Now, we will do the basic four factor comparison
         Four_Factor.four_factors(team_stats)
         # Now we will do the confidence_letdown
-        Confidence_Letdown.confidence_letdown(query_5_boxscores, op_5_boxscores, query_team, next_op_abbr)
+        #Confidence_Letdown.confidence_letdown(query_5_boxscores, op_5_boxscores, query_team, next_op_abbr)
 
         query_team = input("\nWho's scheudle would you like to see? (Enter 0 to exit) \n> ")
 
