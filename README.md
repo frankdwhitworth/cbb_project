@@ -1,5 +1,14 @@
 [![Stability: Experimental](https://masterminds.github.io/stability/experimental.svg)](https://masterminds.github.io/stability/experimental.html)
-# College Basketball Betting Risk Project
+# College Basketball Projector Project 
+(cbb_project)
+
+### Project Purpose: 
+This project utilizes great libraries to pull college basketball statistics for different teams and then uses different algorithms to decide who the winner of any team's next game. The algorithm boils all the stats that my buddy Ryan and I have selected down to a float value and then compares! That easy. If you have any questions about my code, feel free to email me with questions!
+
+#### (the following was for my buddy Ryan when I was teaching him how to code)
+
+### Welcome aboard, Ryan!
+Thanks for agreeing to help me with the basketball side of things, Ryan! You tell what types of stats we need for this algorithm and I'll do the 'heavy lifting' with code. Read the following to learn what this is all about
 
 ### What is this?
 This is called a GitHub repository. It is a tool that is essentially Google Drive for big programming projects. We will use this to share our progress and also to dump files and info for eachother. 
@@ -41,7 +50,5 @@ You can now mess around inside of the repository and edit some of the code or ju
 If you have any ideas or files you want me to look at, just put it in the `cbb_project/ideas_and_files` folder that I made. 
 
 Remeber that for every edit that you make, you need to sync it with committing and pushing that is done inside the github tab in VSCode
-
-Text me when you have read over all of this and are ready to get to work and make some money 🤑
 
 
