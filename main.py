@@ -50,6 +50,7 @@ def main():
         # Now, we will do the basic four factor comparison
         Four_Factor.four_factors(team_stats)
         # Now we will do the confidence_letdown
+        # - - WIP - - 
         #Confidence_Letdown.confidence_letdown(query_5_boxscores, op_5_boxscores, query_team, next_op_abbr)
 
         query_team = input("\nWho's scheudle would you like to see? (Enter 0 to exit) \n> ")
