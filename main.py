@@ -55,10 +55,6 @@ def main():
 
         query_team = input("\nWho's scheudle would you like to see? (Enter 0 to exit) \n> ")
 
-
-def confidence_letdown(query_past_5, op_past_5):
-    print()
-
 def teams_dict(query_abbr, op_team):
     team_stats={}
     for team in Teams(): 
